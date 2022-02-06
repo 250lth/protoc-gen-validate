@@ -9,3 +9,10 @@ const requiredTpl = `
 		}
 	{{ end }}
 `
+
+const testTpl = `{{ $f := .Field }}{{ $r := .Rules }}
+	{{ template "required" . }}
+
+	!!!!!! 1111111111111
+	{{ $f }}
+`

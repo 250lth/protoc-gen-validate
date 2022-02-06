@@ -1,14 +1,17 @@
 package main
 
 import (
+	"log"
+
 	"github.com/envoyproxy/protoc-gen-validate/module"
-	"github.com/lyft/protoc-gen-star"
-	"github.com/lyft/protoc-gen-star/lang/go"
+	pgs "github.com/lyft/protoc-gen-star"
+	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 	"google.golang.org/protobuf/types/pluginpb"
 )
 
 func main() {
 	optional := uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL)
+	log.Println("!!!!!!!!")
 	pgs.
 		Init(pgs.DebugEnv("DEBUG_PGV"), pgs.SupportedFeatures(&optional)).
 		RegisterModule(module.Validator()).

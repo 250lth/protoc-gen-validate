@@ -1,11 +1,13 @@
 package module
 
 import (
+	"log"
+	"strings"
+
 	"github.com/envoyproxy/protoc-gen-validate/templates"
 	"github.com/envoyproxy/protoc-gen-validate/templates/java"
 	pgs "github.com/lyft/protoc-gen-star"
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
-	"strings"
 )
 
 const (
@@ -46,6 +48,7 @@ func (m *Module) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Packag
 
 		for _, tpl := range tpls {
 			out := templates.FilePathFor(tpl)(f, m.ctx, tpl)
+			log.Println(tpl.Tree.Root.Nodes)
 
 			// A nil path means no output should be generated for this file - as controlled by
 			// implementation-specific FilePathFor implementations.
@@ -60,6 +63,7 @@ func (m *Module) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Packag
 						m.AddGeneratorTemplateFile(java.JavaMultiFilePath(f, msg).String(), tpl, msg)
 					}
 				} else {
+					log.Println(outPath, tpl, f)
 					m.AddGeneratorTemplateFile(outPath, tpl, f)
 				}
 			}

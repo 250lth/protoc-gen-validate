@@ -2,6 +2,7 @@ package goshared
 
 const strTpl = `
 	{{ $f := .Field }}{{ $r := .Rules }}
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
 	{{ if $r.GetIgnoreEmpty }}
 		if {{ accessor . }} != "" {

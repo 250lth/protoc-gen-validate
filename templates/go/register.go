@@ -3,8 +3,8 @@ package golang
 import (
 	"text/template"
 
-	"github.com/lyft/protoc-gen-star"
 	"github.com/envoyproxy/protoc-gen-validate/templates/goshared"
+	pgs "github.com/lyft/protoc-gen-star"
 )
 
 func Register(tpl *template.Template, params pgs.Parameters) {
@@ -14,4 +14,5 @@ func Register(tpl *template.Template, params pgs.Parameters) {
 	template.Must(tpl.New("timestamp").Parse(timestampTpl))
 	template.Must(tpl.New("duration").Parse(durationTpl))
 	template.Must(tpl.New("message").Parse(messageTpl))
+	template.Must(tpl.New("test").Parse(testTpl))
 }
